@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Cosmos Testnet Faucet</title>
+        <!-- <script data-main="scripts/app" src="scripts/require.js"></script> -->
+    </head>
+    <body> 
+        <form id="form" method="post">
+            <input type="text" id="address" placeholder="Enter your cosmosxxx address" />
+            <br> <br> <br>
+            <input type="button" value="Get Free Tokens" onclick="submitForm()" />
+        </form>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+        function submitForm() {
+    
+            jQuery.ajax({
+                type: "POST",
+                url: "https://faucet.testnet.cosmos.network",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ name: $("#address").val() }),
+                success: function (data) {
+                    alert(data.Name);
+                },
+                failure: function (errMsg) {
+                    alert(errMsg);
+                }
+            });
+        }
+    </script>
+    
+    <!-- <input type="text" id="quantity"/>
+    <input type="button" value="Click" onclick="submitForm()" /> -->
+</html>
